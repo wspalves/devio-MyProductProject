@@ -1,18 +1,33 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from "@angular/core";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from "./app-routing.module";
+import { AppComponent } from "./app.component";
+import { MenuComponent } from "./navigator/menu/menu.component";
+import { HomeComponent } from "./navigator/home/home.component";
+import { FooterComponent } from "./navigator/footer/footer.component";
+import { AboutComponent } from "./institutional/about/about.component";
+import { ContactComponent } from "./institutional/contact/contact.component";
+import { RouterModule } from "@angular/router";
+import { rootRouterConfig } from "./app.routes";
+import { DatabindingComponent } from './demos/databinding/databinding.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    HomeComponent,
+    FooterComponent,
+    AboutComponent,
+    ContactComponent,
+    DatabindingComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    [RouterModule.forRoot(rootRouterConfig, { useHash: false })],
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
