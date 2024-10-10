@@ -1,6 +1,16 @@
 <div class="container main-container">
   <h3>Interpolation</h3>
-  <p>Clicks numbers is: {{ counterClicks }}</p>
+
+  <p
+    [ngClass]="{
+    'text-secondary': counterClicks < 3,
+    'text-success': counterClicks >= 3,
+    'text-warning': counterClicks >= 5,
+    'text-danger': counterClicks >= 9,
+  }"
+  >
+    Clicks numbers is: {{ counterClicks }}
+  </p>
 
   <br />
   <br />
@@ -19,4 +29,35 @@
   <br />
 
   <button class="btn btn-warning" (click)="addClick()">Click here!</button>
+  <button
+    class="btn btn-danger"
+    (click)="resetClicks()"
+    [disabled]="counterClicks < 10"
+  >
+    Reset!
+  </button>
+
+  <br />
+  <br />
+  <br />
+  <br />
+
+  <h3>Two-way binding</h3>
+
+  <!-- <input type="text" (keyup)="KeyUp($event)" placeholder="Your name">
+  <br><br>
+  <label>Your name is: {{ name }}</label> -->
+
+  <!-- <input
+    type="text"
+    [ngModel]="name"
+    (ngModelChange)="name = $event"
+    placeholder="Your name"
+  />
+  <br /><br />
+  <label>Your name is: {{ name }}</label> -->
+
+  <input type="text" [(ngModel)]="name" placeholder="Your name" />
+  <br /><br />
+  <label [ngClass]="'btn btn-info'">Your name is: {{ name }}</label>
 </div>

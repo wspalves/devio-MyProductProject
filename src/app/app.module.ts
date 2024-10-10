@@ -11,6 +11,7 @@ import { ContactComponent } from "./institutional/contact/contact.component";
 import { RouterModule } from "@angular/router";
 import { rootRouterConfig } from "./app.routes";
 import { DatabindingComponent } from './demos/databinding/databinding.component';
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { DatabindingComponent } from './demos/databinding/databinding.component'
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })],
   ],
   providers: [],
