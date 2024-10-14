@@ -13,20 +13,14 @@
             placeholder="Name (mandatory)"
             formControlName="name"
             [ngClass]="{
-              'is-invalid':
-                registerForm.get('name')!.errors &&
-                registerForm.get('name')!.touched
+              'is-invalid': displayMessage['name']
             }"
           />
         </div>
-        <span
-          *ngIf="
-            registerForm.get('name')!.errors &&
-            registerForm.get('name')!.touched
-          "
-          class="text-danger"
-          ><p>Fill the name</p></span
-        >
+
+        <span class="text-danger" *ngIf="displayMessage['name']"
+          ><p [innerHTML]="displayMessage['name']"></p
+        ></span>
       </div>
 
       <div class="form-group">
@@ -40,16 +34,15 @@
             formControlName="cpf"
             cpf
             [textMask]="{ mask: masks['cpf'].textMask }"
+            [ngClass]="{
+              'is-invalid': displayMessage['cpf']
+            }"
           />
         </div>
 
-        <span
-          *ngIf="
-            registerForm.get('cpf')!.errors && registerForm.get('cpf')!.touched
-          "
-          class="text-danger"
-          ><p>Invalid CPF</p></span
-        >
+        <span class="text-danger" *ngIf="displayMessage['cpf']"
+          ><p [innerHTML]="displayMessage['cpf']"></p
+        ></span>
       </div>
 
       <div class="form-group">
@@ -62,29 +55,14 @@
             placeholder="E-mail (mandatory)"
             formControlName="email"
             [ngClass]="{
-              'is-invalid':
-                registerForm.get('email')!.errors &&
-                registerForm.get('email')!.touched
+              'is-invalid': displayMessage['email']
             }"
           />
         </div>
-        <span
-          *ngIf="
-            registerForm.get('email')?.errors?.['required'] &&
-            registerForm.get('email')!.touched
-          "
-          class="text-danger"
-          ><p>Fill the e-mail</p></span
-        >
 
-        <span
-          *ngIf="
-            registerForm.get('email')?.errors?.['email'] &&
-            registerForm.get('email')!.touched
-          "
-          class="text-danger"
-          ><p>Invalid E-mail</p></span
-        >
+        <span class="text-danger" *ngIf="displayMessage['email']"
+          ><p [innerHTML]="displayMessage['email']"></p
+        ></span>
       </div>
 
       <div class="form-group">
@@ -96,16 +74,15 @@
             class="form-control"
             placeholder="Password (mandatory)"
             formControlName="password"
+            [ngClass]="{
+              'is-invalid': displayMessage['password']
+            }"
           />
         </div>
 
-        <span
-          *ngIf="
-            registerForm.get('password')?.errors?.['rangeLength'] && registerForm.get('password')!.touched
-          "
-          class="text-danger"
-          ><p>Invalid password</p></span
-        >
+        <span class="text-danger" *ngIf="displayMessage['password']"
+          ><p [innerHTML]="displayMessage['password']"></p
+        ></span>
       </div>
 
       <div class="form-group">
@@ -119,8 +96,15 @@
             class="form-control"
             placeholder="Confirm password (mandatory)"
             formControlName="confirmPassword"
+            [ngClass]="{
+              'is-invalid': displayMessage['confirmPassword']
+            }"
           />
         </div>
+
+        <span class="text-danger" *ngIf="displayMessage['confirmPassword']"
+          ><p [innerHTML]="displayMessage['confirmPassword']"></p
+        ></span>
       </div>
 
       <br />
