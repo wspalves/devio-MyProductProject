@@ -4,6 +4,8 @@ import { ContactComponent } from "./institutional/contact/contact.component";
 import { AboutComponent } from "./institutional/about/about.component";
 import { DatabindingComponent } from "./demos/databinding/databinding.component";
 import { ListProductComponent } from "./products/list-product/list-product.component";
+import { RegisterFormGroupComponent } from "./register/register-form-group.component";
+import { RegisterComponent } from "./register/register.component";
 
 export const rootRouterConfig: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -13,4 +15,5 @@ export const rootRouterConfig: Routes = [
   { path: "feature-binding", component: DatabindingComponent },
   { path: "products", component: ListProductComponent },
   { path: "products/:id", component: ListProductComponent },
+  { path: "register", component: RegisterComponent },
 ];

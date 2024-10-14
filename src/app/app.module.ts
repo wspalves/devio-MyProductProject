@@ -15,15 +15,16 @@ import { ContactComponent } from "./institutional/contact/contact.component";
 import { RouterModule } from "@angular/router";
 import { rootRouterConfig } from "./app.routes";
 import { DatabindingComponent } from "./demos/databinding/databinding.component";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { ProductService } from "./products/products.service";
 import { ListProductComponent } from "./products/list-product/list-product.component";
 import {
-  HttpBackend,
-  HttpClient,
   provideHttpClient,
   withInterceptorsFromDi,
 } from "@angular/common/http";
+import { RegisterFormGroupComponent } from "./register/register-form-group.component";
+import { RegisterComponent } from "./register/register.component";
+import { NgxBrazil } from "ngx-brazil";
 
 @NgModule({
   declarations: [
@@ -35,12 +36,17 @@ import {
     ContactComponent,
     DatabindingComponent,
     ListProductComponent,
+    RegisterFormGroupComponent,
+    RegisterComponent,
   ],
 
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
+    NgxBrazil,
+
     [RouterModule.forRoot(rootRouterConfig, { useHash: false })],
   ],
 

@@ -1,0 +1,151 @@
+<div class="container main-container">
+  <h4>Register</h4>
+  <hr />
+  <form novalidate (ngSubmit)="addUser()" [formGroup]="registerForm">
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="name" class="col-md-2 control-label">Full Name</label>
+        <div class="col-md-10">
+          <input
+            id="name"
+            type="text"
+            class="form-control"
+            placeholder="Name (mandatory)"
+            formControlName="name"
+            [ngClass]="{
+              'is-invalid':
+                registerForm.get('name')!.errors &&
+                registerForm.get('name')!.touched
+            }"
+          />
+        </div>
+        <span
+          *ngIf="
+            registerForm.get('name')!.errors &&
+            registerForm.get('name')!.touched
+          "
+          class="text-danger"
+          ><p>Fill the name</p></span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="CPF" class="col-md-2 control-label">CPF</label>
+        <div class="col-md-10">
+          <input
+            id="cpf"
+            type="text"
+            class="form-control"
+            placeholder="CPF (mandatory)"
+            formControlName="cpf"
+            cpf
+            [textMask]="{ mask: masks['cpf'].textMask }"
+          />
+        </div>
+
+        <span
+          *ngIf="
+            registerForm.get('cpf')!.errors && registerForm.get('cpf')!.touched
+          "
+          class="text-danger"
+          ><p>Invalid CPF</p></span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="col-md-2 control-label">Email</label>
+        <div class="col-md-10">
+          <input
+            id="email"
+            type="text"
+            class="form-control"
+            placeholder="E-mail (mandatory)"
+            formControlName="email"
+            [ngClass]="{
+              'is-invalid':
+                registerForm.get('email')!.errors &&
+                registerForm.get('email')!.touched
+            }"
+          />
+        </div>
+        <span
+          *ngIf="
+            registerForm.get('email')?.errors?.['required'] &&
+            registerForm.get('email')!.touched
+          "
+          class="text-danger"
+          ><p>Fill the e-mail</p></span
+        >
+
+        <span
+          *ngIf="
+            registerForm.get('email')?.errors?.['email'] &&
+            registerForm.get('email')!.touched
+          "
+          class="text-danger"
+          ><p>Invalid E-mail</p></span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="password" class="col-md-2 control-label">Password</label>
+        <div class="col-md-10">
+          <input
+            id="password"
+            type="text"
+            class="form-control"
+            placeholder="Password (mandatory)"
+            formControlName="password"
+          />
+        </div>
+
+        <span
+          *ngIf="
+            registerForm.get('password')?.errors?.['rangeLength'] && registerForm.get('password')!.touched
+          "
+          class="text-danger"
+          ><p>Invalid password</p></span
+        >
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword" class="col-md-2 control-label"
+          >Confirm password</label
+        >
+        <div class="col-md-10">
+          <input
+            id="confirmPassword"
+            type="text"
+            class="form-control"
+            placeholder="Confirm password (mandatory)"
+            formControlName="confirmPassword"
+          />
+        </div>
+      </div>
+
+      <br />
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+          <span
+            ><button
+              id="register"
+              class="btn btn-success"
+              [disabled]="registerForm.invalid"
+              type="submit"
+            >
+              Register
+            </button></span
+          >
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-md-4 col-md-offset-2">
+          <p>Formulário válido: {{ registerForm.valid }}</p>
+          <p>Formulário tocado: {{ registerForm.touched }}</p>
+          <p>Formulário sujado: {{ registerForm.dirty }}</p>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
