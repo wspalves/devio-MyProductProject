@@ -1,0 +1,57 @@
+<div style="padding-bottom: 30px">
+  <div class="card h-100">
+    <a
+      class="text-decoration-none"
+      [routerLink]="['/produto-detalhe', product.id]"
+    >
+      <div style="align-content: center">
+        <img
+          src="/assets/{{ product.image }}"
+          height="164px"
+          width="253px"
+          alt=""
+        />
+      </div>
+    </a>
+    <h4 class="card-title">{{ product.name | titlecase }}</h4>
+
+    <div [ngSwitch]="product.promotion">
+      <p *ngSwitchCase="true">Promoção!</p>
+      <p *ngSwitchCase="false">Por apenas:</p>
+    </div>
+
+    <div *ngIf="product.promotion" class="card-body">
+      <div>
+        <h4 class="card-text">
+          De:
+          <small
+            ><del>{{
+              product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt"
+            }}</del></small
+          >
+          Por:
+          {{
+            product.promoValue | currency : "BRL" : "symbol" : "1.2-2" : "pt"
+          }}
+        </h4>
+      </div>
+    </div>
+
+    <div *ngIf="!product.promotion" class="card-body">
+      <div>
+        <h4>
+          {{ product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt" }}
+        </h4>
+      </div>
+    </div>
+
+    <div class="card-footer">
+      <a
+        [ngClass]="product.active ? 'btn btn-success' : 'btn btn-danger'"
+        (click)="sendEvent()"
+      >
+        <span class="fa fa-shopping-cart"></span> Comprar
+      </a>
+    </div>
+  </div>
+</div>
