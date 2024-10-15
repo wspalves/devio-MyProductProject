@@ -16,19 +16,47 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/products']">Products</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/products']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >Products</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/about']">Sobre</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/about']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >Sobre</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/contact']">Contato</a>
+          <a
+            class="nav-link"
+            [routerLink]="['/contact']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >Contato</a
+          >
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/register']">Register</a>
-        </li>        
+          <a
+            class="nav-link"
+            [routerLink]="['/register']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
+            >Register</a
+          >
+        </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/feature-binding']"
+          <a
+            class="nav-link"
+            [routerLink]="['/feature-binding']"
+            [routerLinkActiveOptions]="{ exact: true }"
+            routerLinkActive="active"
             >Features</a
           >
         </li>

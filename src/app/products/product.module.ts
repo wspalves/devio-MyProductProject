@@ -4,14 +4,14 @@ import { CommonModule } from "@angular/common";
 import { ProductRoutingModule } from "./product.route";
 import { ListProductComponent } from "./list-product/list-product.component";
 import { ProductCardDetail } from "../components/product-card-detail.component";
-import { ProductCount } from "../components/product-count.component";
+import { ProductCountComponent } from "../components/product-count.component";
 
 @NgModule({
   declarations: [
     ListProductComponent,
     ProductDashboardComponent,
     ProductCardDetail,
-    ProductCount,
+    ProductCountComponent,
   ],
   imports: [CommonModule, ProductRoutingModule],
   exports: [ProductDashboardComponent],

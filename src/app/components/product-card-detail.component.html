@@ -15,43 +15,52 @@
     </a>
     <h4 class="card-title">{{ product.name | titlecase }}</h4>
 
-    <div [ngSwitch]="product.promotion">
-      <p *ngSwitchCase="true">Promoção!</p>
-      <p *ngSwitchCase="false">Por apenas:</p>
+    <div *ngIf="!product.active">
+      <br />
+      <h5>Avise-me quando chegar!</h5>
+      <ng-content select=".product-oos"></ng-content>
     </div>
 
-    <div *ngIf="product.promotion" class="card-body">
-      <div>
-        <h4 class="card-text">
-          De:
-          <small
-            ><del>{{
-              product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt"
-            }}</del></small
-          >
-          Por:
-          {{
-            product.promoValue | currency : "BRL" : "symbol" : "1.2-2" : "pt"
-          }}
-        </h4>
+    <div *ngIf="product.active">
+      <div [ngSwitch]="product.promotion">
+        <p *ngSwitchCase="true">Promoção!</p>
+        <p *ngSwitchCase="false">Por apenas:</p>
+        <ng-content select=".product-promotion"></ng-content>
       </div>
-    </div>
 
-    <div *ngIf="!product.promotion" class="card-body">
-      <div>
-        <h4>
-          {{ product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt" }}
-        </h4>
+      <div *ngIf="product.promotion" class="card-body">
+        <div>
+          <h4 class="card-text">
+            De:
+            <small
+              ><del>{{
+                product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt"
+              }}</del></small
+            >
+            Por:
+            {{
+              product.promoValue | currency : "BRL" : "symbol" : "1.2-2" : "pt"
+            }}
+          </h4>
+        </div>
       </div>
-    </div>
 
-    <div class="card-footer">
-      <a
-        [ngClass]="product.active ? 'btn btn-success' : 'btn btn-danger'"
-        (click)="sendEvent()"
-      >
-        <span class="fa fa-shopping-cart"></span> Comprar
-      </a>
+      <div *ngIf="!product.promotion" class="card-body">
+        <div>
+          <h4>
+            {{ product.value | currency : "BRL" : "symbol" : "1.2-2" : "pt" }}
+          </h4>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <a
+          [ngClass]="product.active ? 'btn btn-success' : 'btn btn-danger'"
+          (click)="sendEvent()"
+        >
+          <span class="fa fa-shopping-cart"></span> Comprar
+        </a>
+      </div>
     </div>
   </div>
 </div>

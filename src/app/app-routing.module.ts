@@ -6,6 +6,7 @@ import { DatabindingComponent } from "./demos/databinding/databinding.component"
 import { ListProductComponent } from "./products/list-product/list-product.component";
 import { RegisterComponent } from "./register/register.component";
 import { NgModule } from "@angular/core";
+import { NotFoundComponent } from "./navigator/not-found/not-found.component";
 
 const rootRouterConfig: Routes = [
   { path: "", redirectTo: "/home", pathMatch: "full" },
@@ -20,6 +21,7 @@ const rootRouterConfig: Routes = [
   },
   { path: "products/:id", component: ListProductComponent },
   { path: "register", component: RegisterComponent },
+  { path: "**", component: NotFoundComponent },
 ];
 
 @NgModule({

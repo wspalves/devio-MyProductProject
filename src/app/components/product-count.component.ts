@@ -13,7 +13,7 @@ import { Product } from "../products/products";
     </div>
   `,
 })
-export class ProductCount implements OnInit {
+export class ProductCountComponent implements OnInit {
   @Input()
   products?: Product[];
 
